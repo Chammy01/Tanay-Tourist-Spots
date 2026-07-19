@@ -5,6 +5,7 @@ import { LightboxGallery } from "@/components/destinations/lightbox-gallery";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllDestinations, getDestinationBySlug } from "@/lib/data/services/destination-service";
+import { sanitizeMapEmbedUrl } from "@/lib/data/validation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -86,9 +87,9 @@ export default async function DestinationPage({ params }: Props) {
         </Card>
       ) : null}
 
-      {destination.mapEmbedUrl ? (
+      {sanitizeMapEmbedUrl(destination.mapEmbedUrl) ? (
         <div className="mt-8 overflow-hidden rounded-xl border border-zinc-200">
-          <iframe title={`${destination.name} map`} src={destination.mapEmbedUrl} width="100%" height="420" loading="lazy" />
+          <iframe title={`${destination.name} map`} src={sanitizeMapEmbedUrl(destination.mapEmbedUrl)} width="100%" height="420" loading="lazy" />
         </div>
       ) : null}
     </section>

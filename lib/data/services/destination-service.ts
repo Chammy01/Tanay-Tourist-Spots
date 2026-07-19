@@ -1,29 +1,31 @@
-import { LocalDestinationRepository } from "@/lib/data/repositories/destination-repository";
+import { getDestinationRepository } from "@/lib/data/repositories/repository-factory";
 import { DestinationCategory } from "@/lib/data/types";
 
-const repository = new LocalDestinationRepository();
+function repository() {
+  return getDestinationRepository();
+}
 
 export async function getAllDestinations() {
-  return repository.getAll();
+  return repository().getAll();
 }
 
 export async function getDestinationBySlug(slug: string) {
-  return repository.getBySlug(slug);
+  return repository().getBySlug(slug);
 }
 
 export async function getFeaturedDestinations(limit?: number) {
-  return repository.getFeatured(limit);
+  return repository().getFeatured(limit);
 }
 
 export async function getDestinationsByCategory(category: DestinationCategory) {
-  return repository.getByCategory(category);
+  return repository().getByCategory(category);
 }
 
 export async function getHomePageData() {
   const [content, featured, all] = await Promise.all([
-    repository.getSiteContent(),
-    repository.getFeatured(6),
-    repository.getAll(),
+    repository().getSiteContent(),
+    repository().getFeatured(6),
+    repository().getAll(),
   ]);
 
   return {
@@ -40,5 +42,5 @@ export async function getHomePageData() {
 }
 
 export async function getContactData() {
-  return repository.getSiteContent();
+  return repository().getSiteContent();
 }
