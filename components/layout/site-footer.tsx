@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-900">Tanay Tourist Spots</h3>
-          <p className="mt-3 text-sm text-zinc-600">Freshly redesigned travel directory for Tanay's top destinations.</p>
+          <p className="mt-3 text-sm text-zinc-600">Freshly redesigned travel directory for Tanay&apos;s top destinations.</p>
         </div>
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-900">Explore</h3>
